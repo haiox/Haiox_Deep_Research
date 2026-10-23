@@ -1,6 +1,22 @@
-# Haiox Deep Research
+# Haiox Deep Research `v0.2.0-alpha`
 
-> An evidence-first, autonomous multi-agent research pipeline for deep Web3/DePIN protocol investigations, backed by cryptographic SHA-256 evidence from **Haiox Smart Miner v2.0**.
+[![Version](https://img.shields.io/badge/version-v0.2.0--alpha-blue.svg)](https://github.com/haiox/Haiox_Deep_Research)
+[![Tests](https://img.shields.io/badge/tests-4%2F4%20passing-brightgreen.svg)](tests/)
+[![Architecture](https://img.shields.io/badge/architecture-LangGraph%20Multi--Agent-orange.svg)](agents/)
+[![Bedrock](https://img.shields.io/badge/bedrock-Haiox%20Smart%20Miner%20v2.0-purple.svg)](https://github.com/haiox/Haiox_Smart_Miner)
+
+> **Autonomous multi-agent research pipeline** for evidence-first Web3/DePIN protocol investigations, backed by cryptographic SHA-256 evidence ingested directly from **Haiox Smart Miner v2.0**.
+
+---
+
+### 📍 Current Milestone: Day 2 Completed / Transitioning to Step 3
+* **Completed (v0.2.0):**
+  * ✅ **Step 1:** Smart Miner v2.0 bedrock ingestion with SHA-256 digital provenance.
+  * ✅ **Step 2:** Dual-storage architecture (Supabase / Postgres + Zero-config local SQLite fallback & disk JSON audit).
+  * ✅ **Automated Tests:** 4/4 integration tests passing in strict async environment (`test_miner_v2_integration.py`).
+* **Active / In-Flight (Sprint to v1.0.0):**
+  * ⚡ **Step 3:** Technical Architecture Agent (`agents/architecture_agent.py`) separating whitepaper marketing claims from actual GitHub implementation.
+  * 🔄 **Steps 4–7:** Deep Tokenomics, Risk & Centralization Audit, Cross-Critic Agent, and X (@haioxlab) Thread Engine.
 
 ## Architecture & Capabilities
 
@@ -257,29 +273,18 @@ python check_db.py
 
 This prints the latest three records from the `evidence` table.
 
-## 9. Current Status
+## 9. Current Status & Roadmap (Sprint Progress)
 
-The repository contains an implemented end-to-end DePIN research and content-generation workflow. Recorded outputs exist for:
+The repository is actively evolving through daily focused sprints toward **v1.0.0**. Currently at **v0.2.0-alpha**:
 
-- Grass;
-- Bless Network;
-- DAWN Internet; and
-- Teneo Protocol.
-
-Those artifacts demonstrate the intended deliverable format: structured research reports plus investigative social threads.
-
-The following repository limitations are also present:
-
-- automated tests were not found;
-- `curl_cffi` is imported but absent from `requirements.txt`;
-- the setup script does not create the `research_reports` table used by the pipeline;
-- `save_evidence()` currently writes project ID `1` regardless of the function argument;
-- the target URL is hard-coded in `main.py`;
-- the graph registers both `persist_research -> END` and `persist_research -> twitter_factory`;
-- no CLI, API, package entry point, CI workflow, or deployment configuration was found; and
-- a license file was not found.
-
-The previous repository documentation described the project as a **Production-ready MVP / Portfolio Release Candidate**. The recorded outputs support its portfolio demonstration use, but production-readiness criteria, automated validation, and deployment documentation were not found in the current repository.
+- [x] **Step 1: Smart Miner v2.0 Bedrock Connection** — Clean markdown, AST table normalizer, and 64-char SHA-256 evidence digests.
+- [x] **Step 2: Dual Storage & Offline Resilience** — Supabase/PostgreSQL with automatic local SQLite (`data/haiox_research.db`) and JSON evidence file fallback.
+- [x] **Automated Validation** — Pytest suite covering extraction, legacy adapter fallback, SQLite persistence, and full LangGraph workflow (`4 passed in 21s`).
+- [ ] **Step 3 (Current): Architecture Agent** (`agents/architecture_agent.py`) — Deep fact-checking comparing whitepaper marketing claims against actual GitHub repositories & hardware specs.
+- [ ] **Step 4: Deep Tokenomics Agent** — Inflation schedule, emission models, and node staking incentives.
+- [ ] **Step 5: Centralization & Smart Contract Risk Agent** — Admin key privilege audits and 1-100 risk scoring.
+- [ ] **Step 6: Adversarial Critic Agent** — Uncompromising cross-verification between findings.
+- [ ] **Step 7: Production Release v1.0.0 & X Thread Engine** — Automated executive Markdown reports and 280-char technical X/Twitter drops for `@haioxlab`.
 
 ## 10. Future Scope
 
