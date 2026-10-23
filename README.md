@@ -1,7 +1,7 @@
-# Haiox Deep Research `v0.4.0-alpha`
+# Haiox Deep Research `v0.5.0-alpha`
 
-[![Version](https://img.shields.io/badge/version-v0.4.0--alpha-blue.svg)](https://github.com/haiox/Haiox_Deep_Research)
-[![Tests](https://img.shields.io/badge/tests-9%2F9%20passing-brightgreen.svg)](tests/)
+[![Version](https://img.shields.io/badge/version-v0.5.0--alpha-blue.svg)](https://github.com/haiox/Haiox_Deep_Research)
+[![Tests](https://img.shields.io/badge/tests-11%2F11%20passing-brightgreen.svg)](tests/)
 [![Architecture](https://img.shields.io/badge/architecture-LangGraph%20Multi--Agent-orange.svg)](agents/)
 [![Bedrock](https://img.shields.io/badge/bedrock-Haiox%20Smart%20Miner%20v2.0-purple.svg)](https://github.com/haiox/Haiox_Smart_Miner)
 
@@ -9,16 +9,16 @@
 
 ---
 
-### 📍 Current Milestone: Day 4 Completed (Deep Tokenomics Agent Activated)
-* **Completed (v0.4.0):**
+### 📍 Current Milestone: Day 5 Completed (Forensic Risk & Centralization Agent Activated)
+* **Completed (v0.5.0):**
   * ✅ **Step 1:** Smart Miner v2.0 bedrock ingestion with SHA-256 digital provenance.
   * ✅ **Step 2:** Dual-storage architecture (Supabase / Postgres + Zero-config local SQLite fallback & disk JSON audit).
   * ✅ **Step 3:** Technical Architecture Agent (`agents/architecture_agent.py`) separating whitepaper marketing claims from actual GitHub implementation, node specs, and consensus mechanics.
   * ✅ **Step 4:** Deep Tokenomics Agent (`agents/tokenomics_agent.py`) analyzing inflation curves, vesting cliffs, utility sinks, and ponzinomics/dump risk scoring.
-  * ✅ **Automated Tests:** 9/9 integration tests passing in strict async environment (`tests/test_tokenomics_agent.py`, `tests/test_architecture_agent.py`, `tests/test_miner_v2_integration.py`).
+  * ✅ **Step 5:** Forensic Risk Agent (`agents/risk_agent.py`) auditing admin-key custody, smart contract upgradability, ISP regulatory liabilities, and issuing 1-100 composite risk scores.
+  * ✅ **Automated Tests:** 11/11 integration tests passing in strict async environment (`tests/test_risk_agent.py`, `tests/test_tokenomics_agent.py`, `tests/test_architecture_agent.py`, `tests/test_miner_v2_integration.py`).
 * **Active / Next Steps (Sprint to v1.0.0):**
-  * 🔄 **Step 5:** Centralization & Smart Contract Risk Agent (`agents/risk_agent.py`).
-  * 🔄 **Step 6:** Adversarial Critic Agent (`agents/critic_agent.py`).
+  * 🔄 **Step 6:** Adversarial Cross-Critic Agent (`agents/critic_agent.py`).
   * 🔄 **Step 7:** Production Release v1.0.0 & X Thread Engine (@haioxlab).
 
 ## Architecture & Capabilities
@@ -284,8 +284,9 @@ The repository is actively evolving through daily focused sprints toward **v1.0.
 - [x] **Step 2: Dual Storage & Offline Resilience** — Supabase/PostgreSQL with automatic local SQLite (`data/haiox_research.db`) and JSON evidence file fallback.
 - [x] **Step 3: Technical Architecture Agent** (`agents/architecture_agent.py`) — Deep fact-checking comparing whitepaper marketing claims against actual GitHub repositories, node hardware requirements, and consensus topology.
 - [x] **Step 4: Deep Tokenomics Agent** (`agents/tokenomics_agent.py`) — Inflation curves, vesting cliff periods, real utility sinks, and ponzinomics/dump risk scoring.
-- [x] **Automated Validation** — Pytest suite covering extraction, legacy adapter fallback, SQLite persistence, architecture separation, deep tokenomics audit, and full LangGraph workflow (`9 passed in 23s`).
-- [ ] **Step 5 (Next Priority): Centralization & Risk Audit Agent** (`agents/risk_agent.py`) — Admin key privilege audits and 1-100 risk scoring.
+- [x] **Step 5: Forensic Risk Agent** (`agents/risk_agent.py`) — Admin key privilege audits, centralization vectors, ISP regulatory liabilities, and 1-100 composite risk scoring.
+- [x] **Automated Validation** — Pytest suite covering extraction, legacy adapter fallback, SQLite persistence, architecture separation, deep tokenomics audit, forensic risk analysis, and full LangGraph workflow (`11 passed in 25s`).
+- [ ] **Step 6 (Next Priority): Adversarial Cross-Critic Agent** (`agents/critic_agent.py`) — Fact-checking cross-examination and hallucination elimination.
 - [ ] **Step 5: Centralization & Smart Contract Risk Agent** — Admin key privilege audits and 1-100 risk scoring.
 - [ ] **Step 6: Adversarial Critic Agent** — Uncompromising cross-verification between findings.
 - [ ] **Step 7: Production Release v1.0.0 & X Thread Engine** — Automated executive Markdown reports and 280-char technical X/Twitter drops for `@haioxlab`.
