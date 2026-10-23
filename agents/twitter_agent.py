@@ -62,6 +62,8 @@ async def twitter_factory_node(state: AgentState):
             f.write(f"# 🕵️‍♂️ DePIN Research Report: {target_url}\n\n")
             f.write(f"> **Digital Evidence SHA-256**: `{sha256}`  \n")
             f.write(f"> **Extractor Engine**: Haiox Smart Miner v2.0 (AST Normalizer & Cryptographic Provenance)  \n\n")
+            f.write("## 🏗️ Technical Architecture & Claims vs Code\n")
+            f.write(f"```json\n{json.dumps(findings.get('architecture', {}), indent=2)}\n```\n\n")
             f.write("## 📊 Tokenomics\n")
             f.write(f"```json\n{json.dumps(findings.get('tokenomics', {}), indent=2)}\n```\n\n")
             f.write("## ⚠️ Risk Analysis\n")

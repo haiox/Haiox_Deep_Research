@@ -1,7 +1,7 @@
-# Haiox Deep Research `v0.2.0-alpha`
+# Haiox Deep Research `v0.3.0-alpha`
 
-[![Version](https://img.shields.io/badge/version-v0.2.0--alpha-blue.svg)](https://github.com/haiox/Haiox_Deep_Research)
-[![Tests](https://img.shields.io/badge/tests-4%2F4%20passing-brightgreen.svg)](tests/)
+[![Version](https://img.shields.io/badge/version-v0.3.0--alpha-blue.svg)](https://github.com/haiox/Haiox_Deep_Research)
+[![Tests](https://img.shields.io/badge/tests-7%2F7%20passing-brightgreen.svg)](tests/)
 [![Architecture](https://img.shields.io/badge/architecture-LangGraph%20Multi--Agent-orange.svg)](agents/)
 [![Bedrock](https://img.shields.io/badge/bedrock-Haiox%20Smart%20Miner%20v2.0-purple.svg)](https://github.com/haiox/Haiox_Smart_Miner)
 
@@ -9,14 +9,17 @@
 
 ---
 
-### 📍 Current Milestone: Day 2 Completed / Transitioning to Step 3
-* **Completed (v0.2.0):**
+### 📍 Current Milestone: Day 3 Completed (Architecture Agent Activated)
+* **Completed (v0.3.0):**
   * ✅ **Step 1:** Smart Miner v2.0 bedrock ingestion with SHA-256 digital provenance.
   * ✅ **Step 2:** Dual-storage architecture (Supabase / Postgres + Zero-config local SQLite fallback & disk JSON audit).
-  * ✅ **Automated Tests:** 4/4 integration tests passing in strict async environment (`test_miner_v2_integration.py`).
-* **Active / In-Flight (Sprint to v1.0.0):**
-  * ⚡ **Step 3:** Technical Architecture Agent (`agents/architecture_agent.py`) separating whitepaper marketing claims from actual GitHub implementation.
-  * 🔄 **Steps 4–7:** Deep Tokenomics, Risk & Centralization Audit, Cross-Critic Agent, and X (@haioxlab) Thread Engine.
+  * ✅ **Step 3:** Technical Architecture Agent (`agents/architecture_agent.py`) separating whitepaper marketing claims from actual GitHub implementation, node specs, and consensus mechanics.
+  * ✅ **Automated Tests:** 7/7 integration tests passing in strict async environment (`tests/test_architecture_agent.py` & `tests/test_miner_v2_integration.py`).
+* **Active / Next Steps (Sprint to v1.0.0):**
+  * 🔄 **Step 4:** Deep Tokenomics Agent (`agents/tokenomics_agent.py`).
+  * 🔄 **Step 5:** Risk, Centralization & Admin Key Audit (`agents/risk_agent.py`).
+  * 🔄 **Step 6:** Adversarial Critic Agent (`agents/critic_agent.py`).
+  * 🔄 **Step 7:** Production Release v1.0.0 & X Thread Engine (@haioxlab).
 
 ## Architecture & Capabilities
 
@@ -279,9 +282,9 @@ The repository is actively evolving through daily focused sprints toward **v1.0.
 
 - [x] **Step 1: Smart Miner v2.0 Bedrock Connection** — Clean markdown, AST table normalizer, and 64-char SHA-256 evidence digests.
 - [x] **Step 2: Dual Storage & Offline Resilience** — Supabase/PostgreSQL with automatic local SQLite (`data/haiox_research.db`) and JSON evidence file fallback.
-- [x] **Automated Validation** — Pytest suite covering extraction, legacy adapter fallback, SQLite persistence, and full LangGraph workflow (`4 passed in 21s`).
-- [ ] **Step 3 (Current): Architecture Agent** (`agents/architecture_agent.py`) — Deep fact-checking comparing whitepaper marketing claims against actual GitHub repositories & hardware specs.
-- [ ] **Step 4: Deep Tokenomics Agent** — Inflation schedule, emission models, and node staking incentives.
+- [x] **Step 3: Technical Architecture Agent** (`agents/architecture_agent.py`) — Deep fact-checking comparing whitepaper marketing claims against actual GitHub repositories, node hardware requirements, and consensus topology.
+- [x] **Automated Validation** — Pytest suite covering extraction, legacy adapter fallback, SQLite persistence, architecture separation, and full LangGraph workflow (`7 passed in 17s`).
+- [ ] **Step 4 (Next Priority): Deep Tokenomics Agent** — Inflation schedule, emission models, and node staking incentives.
 - [ ] **Step 5: Centralization & Smart Contract Risk Agent** — Admin key privilege audits and 1-100 risk scoring.
 - [ ] **Step 6: Adversarial Critic Agent** — Uncompromising cross-verification between findings.
 - [ ] **Step 7: Production Release v1.0.0 & X Thread Engine** — Automated executive Markdown reports and 280-char technical X/Twitter drops for `@haioxlab`.
