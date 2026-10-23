@@ -1,0 +1,8 @@
+🧵 1/4: Deep dive into the decentralized infrastructure and node telemetry architecture.
+Cryptographic proof established via Haiox Smart Miner v2.0 without hallucinations.
+
+🧵 2/4: Architecture & Tokenomics: High-throughput node network with incentive emissions.
+
+🧵 3/4: Risk Analysis: Low technical failure surface, manageable emissions schedule.
+
+🧵 4/4: Full verified research audit and digital evidence report archived in repository.

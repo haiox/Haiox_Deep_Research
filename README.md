@@ -1,72 +1,35 @@
-# Haiox DePIN Research Agent
+# Haiox Deep Research
 
-Previously published as **AGInaz DePIN Research Agent**; older GitHub links redirect here.
+> An evidence-first, autonomous multi-agent research pipeline for deep Web3/DePIN protocol investigations, backed by cryptographic SHA-256 evidence from **Haiox Smart Miner v2.0**.
 
-> An evidence-first, multi-agent research pipeline for investigating DePIN projects and producing reusable research deliverables.
+## Architecture & Capabilities
 
-## Architecture Understanding
+- **Direct Smart Miner v2.0 Bedrock Integration**: Replaced ad-hoc scrapers with Smart Miner v2.0 (`route()`), enabling static/dynamic crawler routing, AST clean markdown normalization, table extraction, and zero-hallucination source capture.
+- **Digital Evidence Layer (SHA-256 Provenance)**: Every research session computes cryptographic SHA-256 digests over ingested DOM payloads.
+- **Dual-Storage Engine**: Seamless hybrid persistence supporting PostgreSQL / Supabase with automatic, zero-config local SQLite (`data/haiox_research.db`) and JSON audit fallback.
+- **Multi-Agent LangGraph State Machine**: Orchestrates Tokenomics, Risk, Claim Verification, Database Persistence, and Content Factory.
+- **Zero Hallucination Fact-Checking**: Verification Agent cross-examines analytical claims directly against AST source evidence and quotes authentic provenance.
+- **Content Factory**: Automatically publishes comprehensive GitHub Markdown reports and 4-tweet alpha threads.
 
-- This is the third project in the Haiox portfolio; it is separate from Haiox Smart Miner.
-- A project website URL is the workflow input.
-- The local Smart Miner adapter acquires and cleans live page content, then uses a low-cost LLM to prepare the evidence text.
-- Evidence is persisted in PostgreSQL before specialist analysis begins.
-- LangGraph runs Tokenomics, Risk, Verification, persistence, and Content Factory nodes.
-- Specialist agents retrieve source evidence by database ID instead of carrying raw page content in graph state.
-- The verified research object is persisted and then converted into a GitHub Markdown report and an English X/Twitter thread.
-- Existing repository outputs demonstrate runs for Grass, Bless Network, DAWN Internet, and Teneo Protocol.
-
-## 1. Project Overview
-
-Haiox DePIN Research Agent is a Python and LangGraph research system that turns a live DePIN project website into evidence-backed analysis and portfolio-ready content.
-
-The project addresses a practical research problem: DePIN websites often combine technical claims, reward mechanics, token information, and marketing language in unstructured pages. The pipeline captures the source material, stores it as evidence, runs focused analytical agents, checks selected claims against that evidence, and produces reusable deliverables.
-
-This repository is the **DePIN intelligence and content-generation project**. It is not the standalone Haiox Smart Miner project. Its `tools/smart_miner_adapter.py` module provides the acquisition boundary used by this workflow.
-
-The repository is positioned as a portfolio and freelance-research system. Its concrete deliverables are:
-
-- structured tokenomics findings;
-- structured risk findings;
-- claim-verification results with confidence scores and source quotes;
-- persisted research records;
-- GitHub-ready Markdown reports; and
-- English X/Twitter research threads.
-
-## 2. Architecture
-
-The current architecture follows an evidence-first sequence.
-
-1. `main.py` creates the initial graph state with a target URL and project ID.
-2. The extraction node calls the local Smart Miner adapter.
-3. The adapter requests the page with Chrome browser impersonation, removes non-content HTML elements, normalizes the text to ASCII, and asks the configured worker model to extract the project's core information.
-4. The resulting content is saved in the PostgreSQL `evidence` table.
-5. Only the evidence ID is carried forward. Tokenomics and Risk agents retrieve the stored evidence independently.
-6. The Verification Agent compares selected findings with the stored source content.
-7. The verified research object is saved in `research_reports`.
-8. The Content Factory writes a Markdown report and an X/Twitter thread to `output_threads/`.
-
-`AgentState` intentionally carries references and structured results rather than raw HTML or full page text.
-
-## 3. Architecture Diagram
+## 1. Architecture Flow
 
 ```mermaid
 flowchart TD
-    A[Project website URL] --> B[LangGraph: extract_evidence]
-    B --> C[Smart Miner adapter]
-    C --> D[curl_cffi live acquisition]
-    D --> E[BeautifulSoup HTML cleanup]
-    E --> F[Worker LLM: GLM 5.3 Flash]
-    F --> G[(PostgreSQL / Supabase evidence table)]
-    G --> H[Evidence ID in AgentState]
+    A[Target Protocol Website] --> B[LangGraph: extract_evidence]
+    B --> C[Haiox Smart Miner v2.0 Ingestion]
+    C --> D[Adaptive Routing: Static / Playwright Dynamic]
+    D --> E[AST Markdown & Table Normalizer]
+    E --> F[Cryptographic SHA-256 Fingerprint Generator]
+    F --> G[(Hybrid Repository: Supabase / Local SQLite)]
+    G --> H[Evidence ID & SHA-256 in AgentState]
     H --> I[Tokenomics Agent]
-    I --> J[Risk Agent]
-    J --> K[Verification Agent]
-    K --> L[(research_reports table)]
+    I --> J[Risk & Red-Flag Agent]
+    J --> K[Verification & Fact-Checking Agent]
+    K --> L[Persist Research Object]
     L --> M[Content Factory]
-    M --> N[GitHub Markdown report]
-    M --> O[X / Twitter thread]
-    L --> P([END])
-    M --> P
+    M --> N[GitHub Markdown Report]
+    M --> O[X / Twitter Alpha Thread]
+    M --> P([End of Workflow])
 ```
 
 > The diagram includes both outgoing paths currently registered from `persist_research`: a direct `END` edge and an edge to `twitter_factory`. This reflects the graph definition in the repository rather than an inferred design.

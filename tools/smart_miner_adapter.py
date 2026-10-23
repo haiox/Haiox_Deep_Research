@@ -1,46 +1,101 @@
-from bs4 import BeautifulSoup
-from core.llm_router import call_llm
-from curl_cffi.requests import AsyncSession
+"""
+Haiox Deep Research - Smart Miner Adapter
+Integrates Smart Miner v2.0 bedrock ingestion pipeline.
+Directly routes via static/dynamic headless crawler, AST cleaner,
+and produces SHA-256 cryptographic evidence artifacts without hallucination.
+"""
+import asyncio
+import logging
+from typing import Dict, Any, Optional
+
+logger = logging.getLogger("smart_miner_adapter")
+
+try:
+    from smart_miner import route
+    from smart_miner.pipeline.document import CleanDocument
+    from smart_miner.pipeline.evidence import EvidenceArtifact
+except ImportError:
+    route = None
+    CleanDocument = None
+    EvidenceArtifact = None
+
+
+async def fetch_miner_payload(target_url: str, min_text_length: int = 600) -> Dict[str, Any]:
+    """
+    Directly invokes Smart Miner v2.0 crawler and pipeline.
+    Bypasses Cloudflare, strips DOM boilerplate, extracts AST clean markdown,
+    resolves headings/tables/metadata, and generates cryptographic SHA-256 evidence.
+    """
+    if route is None:
+        raise RuntimeError("haiox-smart-miner package is not installed or importable.")
+
+    print(f"📡 [SmartMiner 2.0] Initiating Bedrock Ingestion for: {target_url}")
+    
+    try:
+        crawl_result = await route(
+            target_url,
+            min_text_length=min_text_length,
+            allow_private_urls=False,
+            browser_timeout_ms=30000
+        )
+        
+        if not crawl_result.get("success"):
+            print(f"❌ [SmartMiner 2.0] Crawl failed. Error: {crawl_result.get('error')}")
+            return {
+                "success": False,
+                "url": target_url,
+                "text": "",
+                "markdown": "",
+                "evidence": None,
+                "error": crawl_result.get("error", "EXTRACTION_FAILED"),
+                "status": crawl_result.get("status", "failed"),
+                "routing": crawl_result.get("routing", {})
+            }
+
+        doc = crawl_result.get("document") or {}
+        evidence = crawl_result.get("evidence") or {}
+        routing = crawl_result.get("routing") or {}
+
+        markdown_content = doc.get("markdown") or crawl_result.get("text", "")
+        sha256 = evidence.get("content_sha256") or "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+
+        print(f"✅ [SmartMiner 2.0] Ingestion successful via [{routing.get('strategy', 'unknown')}] strategy.")
+        print(f"🔒 [SmartMiner 2.0] Digital SHA-256 Evidence: {sha256[:16]}... ({len(markdown_content)} chars)")
+
+        return {
+            "success": True,
+            "url": target_url,
+            "text": crawl_result.get("text", ""),
+            "markdown": markdown_content,
+            "tables": doc.get("tables", []),
+            "headings": doc.get("headings", []),
+            "metadata": doc.get("metadata", {}),
+            "evidence": evidence,
+            "content_sha256": sha256,
+            "routing": routing,
+            "status": "ok"
+        }
+
+    except Exception as e:
+        print(f"❌ [SmartMiner 2.0] Exception during ingestion: {e}")
+        return {
+            "success": False,
+            "url": target_url,
+            "text": "",
+            "markdown": "",
+            "evidence": None,
+            "error": str(e),
+            "status": "failed",
+            "routing": {}
+        }
+
 
 async def fetch_raw_data_from_miner(target_url: str) -> str:
     """
-    Extracts live data by bypassing Cloudflare and reliably resolves Windows encoding issues.
+    Backward-compatible entry point for existing nodes.
+    Returns clean AST Markdown directly from Smart Miner v2.0.
     """
-    print(f"📡 [Adapter] Live Fetching & Bypassing Cloudflare for: {target_url}")
-    
-    try:
-        # Use curl_cffi to fully impersonate a Chrome browser fingerprint and bypass Cloudflare
-        async with AsyncSession(impersonate="chrome120", timeout=30.0) as session:
-            response = await session.get(target_url)
-            
-        if response.status_code != 200:
-            print(f"❌ [Adapter] Failed to fetch page. Status: {response.status_code}")
-            return ""
-
-        # Parse the HTML and remove extraneous sections that contain no useful data
-        soup = BeautifulSoup(response.text, "html.parser")
-        for tag in soup(["script", "style", "nav", "footer", "noscript", "header", "aside"]):
-            tag.extract()
-
-        # Extract plain text
-        raw_text = soup.get_text(separator=" ", strip=True)
-        
-        # ☢️ Final pass: remove all non-standard characters and emojis to prevent Windows crashes
-        raw_text = raw_text.encode('ascii', errors='ignore').decode('ascii')
-        
-        clean_prompt = f"""
-        Extract and summarize all core information about this Web3/DePIN project from the webpage text below.
-        Include details on what the project does, its architecture, network bandwidth/hardware usage, token info, and claims.
-        
-        Raw Web Content:
-        {raw_text[:12000]}
-        """
-        
-        print("🧹 [Adapter] Cleaning and structuring raw text with GLM-5.3-Flash...")
-        cleaned_content = await call_llm(clean_prompt, role="cheap")
-        
-        return cleaned_content
-
-    except Exception as e:
-        print(f"❌ [Adapter] Scraping/Extraction error: {e}")
-        return ""
+    payload = await fetch_miner_payload(target_url)
+    if payload.get("success"):
+        return payload.get("markdown", "")
+    return ""

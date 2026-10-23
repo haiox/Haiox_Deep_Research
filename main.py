@@ -2,6 +2,10 @@ import logging
 import asyncio
 import json
 import sys
+from pathlib import Path
+
+# Ensure root directory is on Python path
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 sys.stdout.reconfigure(encoding='utf-8')
 
 # Import the graph
@@ -11,17 +15,20 @@ from agents.graph import app as depin_agent
 logging.getLogger("httpx").setLevel(logging.WARNING)
 
 async def async_main():
-    print("🚀 Starting AGINAZ DePIN Research Agent (Evidence-Based Architecture)...\n")
+    print("🚀 Starting Haiox Deep Research Agent (Smart Miner v2.0 Bedrock Ingestion)...\n")
     print("⚙️ Running LangGraph Workflow...")
     
     # Test URL for the DePIN project
     target_url = "https://teneo.pro/"
     
-    # Lightweight State structure based on the new architecture
+    # State structure based on the updated architecture
     initial_state = {
         "target_url": target_url,
         "project_id": 1,
         "evidence_id": None,
+        "content_sha256": None,
+        "clean_markdown": None,
+        "evidence_artifact": None,
         "structured_findings": None,
         "verification_result": None,
         "current_step": "init",
@@ -43,6 +50,7 @@ async def async_main():
     else:
         print(f"✅ Workflow completed successfully! Step: {result.get('current_step')}")
         print(f"📌 Generated Evidence ID: {result.get('evidence_id')}")
+        print(f"🔒 Digital Evidence SHA-256: {result.get('content_sha256')}")
         
         # --- Display the graph's internal state ---
         print("\n📊 FINAL RESEARCH FINDINGS (Tokenomics & Risk):")

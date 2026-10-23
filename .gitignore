@@ -2,6 +2,11 @@
 .env
 venv/
 
+# Local databases and audit data
+*.db
+data/*.db
+data/evidence/
+
 # Python cache and tooling
 __pycache__/
 *.py[cod]
