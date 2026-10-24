@@ -4,11 +4,11 @@
 [![Tests](https://img.shields.io/badge/tests-14%2F14%20passing-brightgreen.svg)](tests/)
 [![Architecture](https://img.shields.io/badge/architecture-LangGraph%20Multi--Agent-orange.svg)](agents/)
 [![Bedrock](https://img.shields.io/badge/bedrock-Haiox%20Smart%20Miner%20v2.0-purple.svg)](https://github.com/haiox/Haiox_Smart_Miner)
-[![Streamlit Live Demo](https://img.shields.io/badge/Streamlit_App-Live_Cockpit-FF4B4B?style=flat-square&logo=streamlit&logoColor=white)](https://haiox-deep-research.streamlit.app/)
+[![Streamlit Live Demo](https://img.shields.io/badge/Streamlit_App-Live_Cockpit-FF4B4B?style=flat-square&logo=streamlit&logoColor=white)](https://haioxdeepresearch-gzgjjtqu7jayimftytfwz6.streamlit.app/)
 
 > **Autonomous multi-agent research pipeline** for evidence-first Web3/DePIN protocol due diligence. Extracts verified ground-truth from whitepapers & sites via **Haiox Smart Miner v2.0**, executes 6-node forensic verification, and eliminates marketing hype.
 
-[⚡ Try the Hosted Streamlit Dashboard](https://haiox-deep-research.streamlit.app/) · Or run locally via `streamlit run streamlit_app.py`.
+[⚡ Try the Hosted Streamlit Dashboard](https://haioxdeepresearch-gzgjjtqu7jayimftytfwz6.streamlit.app/) · Or run locally via `streamlit run streamlit_app.py`.
 
 ---
 
