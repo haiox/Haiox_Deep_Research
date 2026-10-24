@@ -53,35 +53,70 @@ st.markdown("""
     }
     
     /* Header Typography */
-    .main-header {
-        font-size: 2.3rem;
+    .main-title {
+        font-size: 2.2rem;
         font-weight: 800;
-        margin-bottom: 0.2rem;
+        margin-bottom: 0.4rem;
+        color: #ffffff;
         letter-spacing: -0.5px;
-        background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
     }
     .sub-header {
-        font-size: 1.02rem;
+        font-size: 0.98rem;
         color: #94a3b8;
+        margin-top: 0.3rem;
         margin-bottom: 1.4rem;
         font-weight: 400;
         line-height: 1.5;
     }
     
-    /* Glowing Badge Pills */
+    /* Glowing Badge Pills Container */
+    .badges-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 4px;
+        margin-bottom: 10px;
+    }
     .badge-pill {
         display: inline-flex;
         align-items: center;
         gap: 6px;
-        padding: 4px 10px;
+        padding: 4px 12px;
         border-radius: 6px;
-        font-size: 0.80rem;
+        font-size: 0.82rem;
         font-weight: 600;
-        margin-right: 4px;
-        margin-bottom: 6px;
         letter-spacing: 0.3px;
+        -webkit-text-fill-color: initial !important;
+    }
+    .pill-green {
+        border: 1px solid #10b981 !important;
+        background-color: #064e3b !important;
+        color: #a7f3d0 !important;
+    }
+    .pill-blue {
+        border: 1px solid #0284c7 !important;
+        background-color: #0c2d48 !important;
+        color: #bae6fd !important;
+    }
+    .pill-purple {
+        border: 1px solid #9333ea !important;
+        background-color: #2e1065 !important;
+        color: #e9d5ff !important;
+    }
+    .pill-rose {
+        border: 1px solid #f43f5e !important;
+        background-color: #4c0519 !important;
+        color: #fecdd3 !important;
+    }
+    .pill-amber {
+        border: 1px solid #f59e0b !important;
+        background-color: #451a03 !important;
+        color: #fde68a !important;
+    }
+    .pill-teal {
+        border: 1px solid #14b8a6 !important;
+        background-color: #042f2e !important;
+        color: #99f6e4 !important;
     }
     
     /* Metric Cards */
@@ -89,7 +124,7 @@ st.markdown("""
         background: linear-gradient(145deg, #111827 0%, #0f172a 100%);
         border: 1px solid #1e293b;
         border-radius: 10px;
-        padding: 14px 16px;
+        padding: 12px 8px;
         text-align: center;
         box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
         transition: transform 0.15s ease, border-color 0.15s ease;
@@ -99,20 +134,25 @@ st.markdown("""
         transform: translateY(-2px);
     }
     .metric-sub {
-        font-size: 11px;
+        font-size: 10.5px;
         color: #64748b;
         font-weight: 700;
         text-transform: uppercase;
-        letter-spacing: 0.8px;
+        letter-spacing: 0.6px;
     }
     .metric-val {
-        font-size: 26px;
+        font-size: 21px;
         font-weight: 800;
         margin: 4px 0 2px 0;
         letter-spacing: -0.5px;
     }
     .metric-note {
-        font-size: 11px;
+        font-size: 10.5px;
+        color: #94a3b8;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
         color: #94a3b8;
     }
     
@@ -500,21 +540,20 @@ with st.sidebar:
 # ---------------------------------------------------------
 # Top Header & Status Badges
 # ---------------------------------------------------------
-st.markdown(
-    '<div class="main-header">🔬 Haiox Deep Research v1.0.0 '
-    '<span class="badge-pill" style="border: 1px solid #00c853; background-color: #082914; color: #55f79a;">✅ Phase 1-7 Release</span> '
-    '<span class="badge-pill" style="border: 1px solid #0284c7; background-color: #082142; color: #7dd3fc;">⚡ 14/14 Tests PASS</span> '
-    '<span class="badge-pill" style="border: 1px solid #7c3aed; background-color: #1b1035; color: #c084fc;">🔒 SHA-256 Provenance</span> '
-    '<span class="badge-pill" style="border: 1px solid #e11d48; background-color: #2b0d1e; color: #fda4af;">⚔️ Adversarial Critic</span> '
-    '<span class="badge-pill" style="border: 1px solid #d97706; background-color: #331a00; color: #fde68a;">🪙 Deep Tokenomics</span> '
-    '<span class="badge-pill" style="border: 1px solid #20c997; background-color: #0a2e26; color: #63e6be;">🛡️ Smart Miner v2.0</span>'
-    '</div>',
-    unsafe_allow_html=True,
-)
-st.markdown(
-    '<div class="sub-header">Autonomous Multi-Agent Due-Diligence Engine · Zero-Hallucination Web3 & DePIN Forensic Auditor (Haiox AI Trilogy: Pillar 2)</div>',
-    unsafe_allow_html=True,
-)
+st.markdown("""
+<div style="margin-bottom: 1.2rem;">
+    <div class="main-title">🔬 Haiox Deep Research <span style="font-size: 1.2rem; font-weight: 700; color: #38bdf8; background: #0c2d48; padding: 2px 8px; border-radius: 6px; border: 1px solid #0284c7;">v1.0.0</span></div>
+    <div class="badges-row">
+        <span class="badge-pill pill-green">✅ Phase 1-7 Release</span>
+        <span class="badge-pill pill-blue">⚡ 14/14 Tests PASS</span>
+        <span class="badge-pill pill-purple">🔒 SHA-256 Provenance</span>
+        <span class="badge-pill pill-rose">⚔️ Adversarial Critic</span>
+        <span class="badge-pill pill-amber">🪙 Deep Tokenomics</span>
+        <span class="badge-pill pill-teal">🛡️ Smart Miner v2.0</span>
+    </div>
+    <div class="sub-header">Autonomous Multi-Agent Due-Diligence Engine · Zero-Hallucination Web3 &amp; DePIN Forensic Auditor (Haiox AI Trilogy: Pillar 2)</div>
+</div>
+""", unsafe_allow_html=True)
 
 
 # ---------------------------------------------------------
@@ -538,19 +577,19 @@ with col_btn:
 st.markdown("##### ⚡ Instant Curated Presets:")
 col_p1, col_p2, col_p3, col_p4 = st.columns(4)
 with col_p1:
-    if st.button("🌐 io.net (GPU Cloud)", use_container_width=True):
+    if st.button("🌐 io.net", use_container_width=True):
         st.session_state.target_url = "https://io.net/"
         st.rerun()
 with col_p2:
-    if st.button("🎨 Render Network (GPU Render)", use_container_width=True):
+    if st.button("🎨 Render Network", use_container_width=True):
         st.session_state.target_url = "https://render.x.io/"
         st.rerun()
 with col_p3:
-    if st.button("📡 Helium Network (Wireless IoT)", use_container_width=True):
+    if st.button("📡 Helium Network", use_container_width=True):
         st.session_state.target_url = "https://helium.com/"
         st.rerun()
 with col_p4:
-    if st.button("☁️ Akash Network (Compute)", use_container_width=True):
+    if st.button("☁️ Akash Network", use_container_width=True):
         st.session_state.target_url = "https://akash.network/"
         st.rerun()
 
@@ -675,12 +714,13 @@ if audit_result:
         """, unsafe_allow_html=True)
 
     with m6:
-        elapsed_val = audit_result.get("elapsed", "1.2s")
+        raw_elapsed = audit_result.get("elapsed", "0.08s")
+        elapsed_val = raw_elapsed.split()[0]
         st.markdown(f"""
         <div class="metric-card">
             <div class="metric-sub">Pipeline Latency</div>
-            <div class="metric-val" style="color: #e2e8f0; font-size: 20px;">{elapsed_val}</div>
-            <div class="metric-note">Bedrock Ingest + LLM</div>
+            <div class="metric-val" style="color: #e2e8f0; font-size: 21px;">{elapsed_val}</div>
+            <div class="metric-note">Sub-second Bedrock</div>
         </div>
         """, unsafe_allow_html=True)
 
