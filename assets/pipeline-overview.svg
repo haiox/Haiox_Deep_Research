@@ -1,0 +1,237 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 560" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050811"/>
+      <stop offset="50%" stop-color="#0a1224"/>
+      <stop offset="100%" stop-color="#03060c"/>
+    </linearGradient>
+
+    <!-- Card Backgrounds -->
+    <linearGradient id="cardGradDark" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#101a2e"/>
+      <stop offset="100%" stop-color="#080e1a"/>
+    </linearGradient>
+
+    <!-- Header & Accent Gradients -->
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+
+    <linearGradient id="roseGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f43f5e"/>
+      <stop offset="100%" stop-color="#be123c"/>
+    </linearGradient>
+
+    <linearGradient id="amberGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+
+    <!-- Markers -->
+    <marker id="arrowCyan" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,1 L7,4 L0,7 Z" fill="#38bdf8"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,1 L7,4 L0,7 Z" fill="#10b981"/>
+    </marker>
+    <marker id="arrowPurple" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,1 L7,4 L0,7 Z" fill="#a855f7"/>
+    </marker>
+  </defs>
+
+  <style>
+    .brand-title { font-family: 'Segoe UI', Inter, -apple-system, sans-serif; font-size: 15px; font-weight: 800; letter-spacing: 2px; fill: #38bdf8; }
+    .card-title { font-family: 'Segoe UI', Inter, -apple-system, sans-serif; font-size: 13.5px; font-weight: 700; fill: #f8fafc; }
+    .card-sub { font-family: 'Segoe UI', Inter, -apple-system, sans-serif; font-size: 11px; font-weight: 500; fill: #94a3b8; }
+    .code-pill { font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 10px; fill: #7dd3fc; }
+    .badge-text { font-family: 'Segoe UI', Inter, sans-serif; font-size: 10px; font-weight: 700; fill: #ffffff; }
+  </style>
+
+  <!-- Canvas Background -->
+  <rect width="1440" height="560" rx="16" fill="url(#bgGrad)"/>
+  <rect width="1440" height="560" rx="16" fill="none" stroke="#1e293b" stroke-width="1.5"/>
+
+  <!-- Top Brand Navigation Bar -->
+  <g transform="translate(40, 28)">
+    <text x="0" y="20" class="brand-title">🔬 HAIOX DEEP RESEARCH · MULTI-AGENT DUE-DILIGENCE PIPELINE (v1.0.0)</text>
+    <rect x="730" y="4" width="160" height="24" rx="12" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+    <text x="810" y="20" text-anchor="middle" class="badge-text" fill="#6ee7b7">14/14 TESTS PASSING</text>
+
+    <rect x="900" y="4" width="190" height="24" rx="12" fill="#1e1b4b" stroke="#6366f1" stroke-width="1"/>
+    <text x="995" y="20" text-anchor="middle" class="badge-text" fill="#c7d2fe">LANGGRAPH 6-NODE GRAPH</text>
+
+    <rect x="1100" y="4" width="220" height="24" rx="12" fill="#180e29" stroke="#a855f7" stroke-width="1"/>
+    <text x="1210" y="20" text-anchor="middle" class="badge-text" fill="#f0abfc">SHA-256 ZERO-HALLUCINATION</text>
+  </g>
+
+  <!-- Outer Group for the 4 Architectural Pillars -->
+  <g transform="translate(40, 85)">
+
+    <!-- ================= COLUMN 1: BEDROCK INGESTION ================= -->
+    <rect x="0" y="0" width="310" height="435" rx="12" fill="url(#cardGradDark)" stroke="#0284c7" stroke-width="1.2"/>
+    <rect x="0" y="0" width="310" height="38" rx="12" fill="url(#cyanGrad)"/>
+    <text x="16" y="24" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="800" fill="#ffffff">1. BEDROCK INGESTION (SMART MINER)</text>
+
+    <!-- Sub-boxes -->
+    <g transform="translate(14, 52)">
+      <rect width="282" height="74" rx="8" fill="#0d1829" stroke="#1e3a5f" stroke-width="1"/>
+      <text x="12" y="22" class="card-title">🌐 Zero-Token Web Scraper</text>
+      <text x="12" y="42" class="card-sub">• Static HTTPX + Headless Fallback</text>
+      <text x="12" y="58" class="card-sub">• Anti-Bot Shims &amp; WAF Bypass</text>
+    </g>
+
+    <g transform="translate(14, 136)">
+      <rect width="282" height="82" rx="8" fill="#0d1829" stroke="#1e3a5f" stroke-width="1"/>
+      <text x="12" y="22" class="card-title">🧹 AST DOM De-Noising Engine</text>
+      <text x="12" y="42" class="card-sub">• Strips Navbars, Ads, Link Farms</text>
+      <text x="12" y="58" class="card-sub">• Semantic Density &amp; Table Normalizer</text>
+      <text x="12" y="74" class="card-sub">• Metadata &amp; JSON-LD Resolver</text>
+    </g>
+
+    <g transform="translate(14, 228)">
+      <rect width="282" height="86" rx="8" fill="#0d1829" stroke="#1e3a5f" stroke-width="1"/>
+      <text x="12" y="22" class="card-title">🔒 Cryptographic SHA-256 Provenance</text>
+      <text x="12" y="42" class="card-sub">• Immutable Clean Markdown Hash</text>
+      <text x="12" y="58" class="card-sub">• Token-Budget XML Evidence Packet</text>
+      <text x="12" y="74" class="code-pill">evidence_artifact: 64-char Digest</text>
+    </g>
+
+    <g transform="translate(14, 324)">
+      <rect width="282" height="92" rx="8" fill="#0d1829" stroke="#1e3a5f" stroke-width="1"/>
+      <text x="12" y="22" class="card-title">💾 Dual-Storage Engine</text>
+      <text x="12" y="42" class="card-sub">• Cloud PostgreSQL / Supabase</text>
+      <text x="12" y="58" class="card-sub">• Auto-Fallback: Local SQLite</text>
+      <text x="12" y="74" class="code-pill">data/haiox_research.db</text>
+    </g>
+
+    <!-- Connector 1 -> 2 -->
+    <path d="M 310 217 L 348 217" stroke="#38bdf8" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#arrowCyan)"/>
+
+    <!-- ================= COLUMN 2: 6-AGENT LANGGRAPH ================= -->
+    <rect x="350" y="0" width="370" height="435" rx="12" fill="url(#cardGradDark)" stroke="#a855f7" stroke-width="1.2"/>
+    <rect x="350" y="0" width="370" height="38" rx="12" fill="url(#purpleGrad)"/>
+    <text x="366" y="24" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="800" fill="#ffffff">2. LANGGRAPH MULTI-AGENT GRAPH</text>
+
+    <!-- Nodes inside LangGraph -->
+    <g transform="translate(364, 52)">
+      <rect width="342" height="74" rx="8" fill="#180e29" stroke="#4c1d95" stroke-width="1"/>
+      <text x="12" y="22" class="card-title">🏗️ Node 1: Architecture Agent</text>
+      <text x="12" y="42" class="card-sub">• Whitepaper Claims vs GitHub AST Reality</text>
+      <text x="12" y="58" class="card-sub">• Node Specs (GPU VRAM, Bandwidth, CPU)</text>
+    </g>
+
+    <g transform="translate(364, 136)">
+      <rect width="342" height="74" rx="8" fill="#180e29" stroke="#4c1d95" stroke-width="1"/>
+      <text x="12" y="22" class="card-title">🪙 Node 2: Deep Tokenomics Agent</text>
+      <text x="12" y="42" class="card-sub">• Inflation Curves, Halvings &amp; Supply Caps</text>
+      <text x="12" y="58" class="card-sub">• Whale Unlock Cliff &amp; Dump Risk Scoring</text>
+    </g>
+
+    <g transform="translate(364, 220)">
+      <rect width="342" height="74" rx="8" fill="#180e29" stroke="#4c1d95" stroke-width="1"/>
+      <text x="12" y="22" class="card-title">🛡️ Node 3: Forensic Risk Agent</text>
+      <text x="12" y="42" class="card-sub">• Admin Key Custody (Multi-Sig vs Single EOA)</text>
+      <text x="12" y="58" class="card-sub">• 1–100 Composite Risk Tier &amp; SPOF Audit</text>
+    </g>
+
+    <g transform="translate(364, 304)">
+      <rect width="342" height="74" rx="8" fill="#180e29" stroke="#4c1d95" stroke-width="1"/>
+      <text x="12" y="22" class="card-title">⚔️ Node 4: Adversarial Critic</text>
+      <text x="12" y="42" class="card-sub">• Cross-Examines Claims Against Evidence</text>
+      <text x="12" y="58" class="card-sub">• Strikes Unbacked Hype (Zero-Hallucination %)</text>
+    </g>
+
+    <g transform="translate(364, 388)">
+      <rect width="342" height="38" rx="8" fill="#180e29" stroke="#4c1d95" stroke-width="1"/>
+      <text x="12" y="24" class="card-title">🐦 Node 5: Twitter Drop &amp; Dossier Generator</text>
+    </g>
+
+    <!-- Connector 2 -> 3 -->
+    <path d="M 720 217 L 758 217" stroke="#a855f7" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#arrowPurple)"/>
+
+    <!-- ================= COLUMN 3: STREAMLIT COCKPIT ================= -->
+    <rect x="760" y="0" width="310" height="435" rx="12" fill="url(#cardGradDark)" stroke="#10b981" stroke-width="1.2"/>
+    <rect x="760" y="0" width="310" height="38" rx="12" fill="url(#greenGrad)"/>
+    <text x="776" y="24" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="800" fill="#ffffff">3. STREAMLIT CLOUD COCKPIT</text>
+
+    <g transform="translate(774, 52)">
+      <rect width="282" height="74" rx="8" fill="#072217" stroke="#065f46" stroke-width="1"/>
+      <text x="12" y="22" class="card-title">⚡ Instant DePIN Presets</text>
+      <text x="12" y="42" class="card-sub">• io.net (Decentralized GPU Cloud)</text>
+      <text x="12" y="58" class="card-sub">• Render, Helium &amp; Akash Network</text>
+    </g>
+
+    <g transform="translate(774, 136)">
+      <rect width="282" height="82" rx="8" fill="#072217" stroke="#065f46" stroke-width="1"/>
+      <text x="12" y="22" class="card-title">📊 6 Real-Time Telemetry Gauges</text>
+      <text x="12" y="42" class="card-sub">• Audit Status &amp; Composite Risk</text>
+      <text x="12" y="58" class="card-sub">• Zero-Hallucination % Accuracy</text>
+      <text x="12" y="74" class="card-sub">• Claims Struck &amp; SHA-256 Digest</text>
+    </g>
+
+    <g transform="translate(774, 228)">
+      <rect width="282" height="86" rx="8" fill="#072217" stroke="#065f46" stroke-width="1"/>
+      <text x="12" y="22" class="card-title">📑 8 Multi-Agent Deep Tabs</text>
+      <text x="12" y="42" class="card-sub">• Executive Brief &amp; 6-Vector Radar</text>
+      <text x="12" y="58" class="card-sub">• Claims vs Reality AST Comparison</text>
+      <text x="12" y="74" class="card-sub">• Vesting Curves &amp; SPOF Centralization</text>
+    </g>
+
+    <g transform="translate(774, 324)">
+      <rect width="282" height="92" rx="8" fill="#072217" stroke="#065f46" stroke-width="1"/>
+      <text x="12" y="22" class="card-title">🌐 Production Deployment</text>
+      <text x="12" y="42" class="card-sub">• Enforced Dark Glassmorphism</text>
+      <text x="12" y="58" class="code-pill">haiox-deep-research-review</text>
+      <text x="12" y="76" class="code-pill">.streamlit.app (Hosted Live)</text>
+    </g>
+
+    <!-- Connector 3 -> 4 -->
+    <path d="M 1070 217 L 1108 217" stroke="#10b981" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#arrowGreen)"/>
+
+    <!-- ================= COLUMN 4: TRILOGY & OUTPUTS ================= -->
+    <rect x="1110" y="0" width="250" height="435" rx="12" fill="url(#cardGradDark)" stroke="#f59e0b" stroke-width="1.2"/>
+    <rect x="1110" y="0" width="250" height="38" rx="12" fill="url(#amberGrad)"/>
+    <text x="1124" y="24" font-family="'Segoe UI', sans-serif" font-size="12.5" font-weight="800" fill="#ffffff">4. GOLDEN TRILOGY SYNERGY</text>
+
+    <g transform="translate(1122, 52)">
+      <rect width="226" height="86" rx="8" fill="#241403" stroke="#78350f" stroke-width="1"/>
+      <text x="10" y="22" class="card-title">🐦 Milestone Drop Engine</text>
+      <text x="10" y="42" class="card-sub">• 280-Cap Strict Compliance</text>
+      <text x="10" y="58" class="card-sub">• Systems Architect Tone</text>
+      <text x="10" y="74" class="card-sub">• 1-Click Copy Ready</text>
+    </g>
+
+    <g transform="translate(1122, 148)">
+      <rect width="226" height="86" rx="8" fill="#241403" stroke="#78350f" stroke-width="1"/>
+      <text x="10" y="22" class="card-title">📚 Documentation Hub</text>
+      <text x="10" y="42" class="card-sub">• Dual-Drop Architecture</text>
+      <text x="10" y="58" class="card-sub">• High-Density NotebookLM</text>
+      <text x="10" y="74" class="card-sub">• Persian Executive Summary</text>
+    </g>
+
+    <g transform="translate(1122, 244)">
+      <rect width="226" height="172" rx="8" fill="#241403" stroke="#78350f" stroke-width="1"/>
+      <text x="10" y="22" class="card-title">🏛️ The Golden Trilogy</text>
+      <text x="10" y="44" class="code-pill">1. Haiox Smart Miner ⚡</text>
+      <text x="10" y="60" class="card-sub">   (Bedrock Ingestion)</text>
+      <text x="10" y="80" class="code-pill">2. Haiox Deep Research 🔬</text>
+      <text x="10" y="96" class="card-sub">   (Forensic Multi-Agent)</text>
+      <text x="10" y="116" class="code-pill">3. Haiox Orchestrator 🎭</text>
+      <text x="10" y="132" class="card-sub">   (Blind Brainstorm Council)</text>
+      <text x="10" y="154" class="card-sub" fill="#10b981">Zero-Leak OPSEC Verified</text>
+    </g>
+
+  </g>
+</svg>
