@@ -11,18 +11,17 @@
 ---
 
 ## 🏛️ Ecosystem Architecture: The Golden Trilogy
-Haiox Deep Research is the analytical intelligence engine bridging data ingestion and high-ticket freelance execution:
+Haiox Deep Research is the analytical intelligence engine converting raw internet telemetry into verifiable forensic audits:
 
 ```mermaid
 graph LR
     classDef step fill:#0f172a,stroke:#38bdf8,stroke-width:1px,color:#fff;
     classDef target fill:#064e3b,stroke:#10b981,stroke-width:2px,color:#fff;
 
-    P1["1. Smart Miner v2.0<br/>(Clean Ingestion)"]:::step 
-    --> P2["2. Deep Research v1.0.0<br/>(Forensic 6-Agent Audit)"]:::step
-    --> P3["3. Orchestrator<br/>(Blind Brainstorm Council)"]:::step
-    --> P4["4. Freelancer Sniper<br/>(Hyper-Contextual Bidding)"]:::step
-    --> WIN["💰 High-Ticket Client Contracts"]:::target
+    P1["1. Haiox Smart Miner v2.0<br/>(Clean Ingestion & Anti-Bot)"]:::step 
+    --> P2["2. Haiox Deep Research v1.0.0<br/>(Forensic 6-Agent Audit)"]:::step
+    --> P3["3. Haiox Orchestrator<br/>(Blind Brainstorm Council)"]:::step
+    --> GOAL["🎯 Production Web3 Due Diligence"]:::target
 ```
 
 ---
