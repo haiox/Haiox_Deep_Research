@@ -480,34 +480,63 @@ PRESET_DOSSIERS: Dict[str, Dict[str, Any]] = {
 # ---------------------------------------------------------
 # Sidebar Controls & Configuration
 # ---------------------------------------------------------
-with st.sidebar:
-    st.markdown("## ⚙️ Engine Settings")
-    
-    # OpenRouter API Key
-    default_openrouter_key = os.getenv("OPENROUTER_API_KEY", "")
-    if hasattr(st, "secrets") and "OPENROUTER_API_KEY" in st.secrets:
-        default_openrouter_key = st.secrets["OPENROUTER_API_KEY"]
-    openrouter_key = st.text_input(
-        "OpenRouter API Key",
-        value=default_openrouter_key,
-        type="password",
-        help="Required for live AI LLM reasoning across the 6 LangGraph agents.",
-    )
-    if openrouter_key:
-        os.environ["OPENROUTER_API_KEY"] = openrouter_key
+if "free_audits_used" not in st.session_state:
+    st.session_state.free_audits_used = 0
+MAX_FREE_AUDITS = 3
 
-    selected_model = st.selectbox(
-        "Primary LLM Router",
+with st.sidebar:
+    st.markdown("## 🔑 Execution & API Tier")
+    
+    # Resolve server-provided OpenRouter key (st.secrets or environment)
+    server_openrouter_key = os.getenv("OPENROUTER_API_KEY", "")
+    if hasattr(st, "secrets") and "OPENROUTER_API_KEY" in st.secrets:
+        server_openrouter_key = st.secrets["OPENROUTER_API_KEY"]
+    
+    api_mode = st.radio(
+        "Select Execution Tier",
         options=[
-            "deepseek/deepseek-chat",
-            "google/gemini-3.8-flash",
-            "anthropic/claude-3.5-sonnet",
-            "meta-llama/llama-3.3-70b-instruct"
+            "⚡ Haiox Community Tier (Free Quota)",
+            "🔑 Bring Your Own Key (OpenRouter)"
         ],
         index=0,
-        help="DeepSeek-Chat is the recommended cost-effective reasoning engine."
+        help="Select whether to use the sponsored community demo quota or your personal OpenRouter key."
     )
     
+    if api_mode == "⚡ Haiox Community Tier (Free Quota)":
+        rem_quota = max(0, MAX_FREE_AUDITS - st.session_state.free_audits_used)
+        if rem_quota > 0:
+            st.success(f"🎁 **Community Demo Quota:** `{rem_quota}/{MAX_FREE_AUDITS}` Audits Left")
+        else:
+            st.info("ℹ️ **Free Quota Exhausted:** 3/3 used. Switch to BYOK for unlimited audits.")
+        st.caption("• **Engine:** Powered by OpenRouter Multi-Model Mesh")
+        st.caption("• **Assigned Model:** `deepseek/deepseek-chat` (Fast & Precise)")
+        active_api_key = server_openrouter_key
+        selected_model = "deepseek/deepseek-chat"
+    else:
+        active_api_key = st.text_input(
+            "Personal OpenRouter API Key",
+            value="",
+            type="password",
+            placeholder="sk-or-v1-...",
+            help="Enter your personal OpenRouter key for unlimited high-concurrency audits."
+        )
+        selected_model = st.selectbox(
+            "Primary LLM Router",
+            options=[
+                "deepseek/deepseek-chat",
+                "google/gemini-3.8-flash",
+                "anthropic/claude-3.5-sonnet",
+                "meta-llama/llama-3.3-70b-instruct"
+            ],
+            index=0,
+            help="Select the reasoning model for multi-agent synthesis."
+        )
+        st.caption("🚀 **BYOK Mode:** Unlimited Audits · Custom Routing")
+
+    if active_api_key:
+        os.environ["OPENROUTER_API_KEY"] = active_api_key
+    
+    st.divider()
     critic_rigor = st.slider(
         "Adversarial Critic Rigor",
         min_value=1,
@@ -605,42 +634,56 @@ active_url = input_url.strip() if input_url else st.session_state.target_url
 audit_result: Dict[str, Any] = {}
 
 if run_audit and active_url not in PRESET_DOSSIERS:
-    # Live execution requested for new / unknown URL
-    if not openrouter_key:
-        st.warning("⚠️ No OpenRouter API Key provided in sidebar. Using deterministic rule-based fallback pipeline.")
-    
-    with st.spinner(f"Initiating Smart Miner v2.0 Ingestion & 6-Agent LangGraph Pipeline for: {active_url}..."):
-        start_time = time.time()
-        initial_state = {
-            "target_url": active_url,
-            "project_id": 1,
-            "evidence_id": None,
-            "content_sha256": None,
-            "clean_markdown": None,
-            "evidence_artifact": None,
-            "structured_findings": {},
-            "verification_result": None,
-            "current_step": "init",
-            "errors": []
-        }
+    # Check if community quota is exhausted
+    if api_mode == "⚡ Haiox Community Tier (Free Quota)" and st.session_state.free_audits_used >= MAX_FREE_AUDITS:
+        st.error(
+            "🛡️ **Session Demo Quota Limit Reached (3/3 Used)**\n\n"
+            "To prevent cluster resource exhaustion, the sponsored tier allows 3 live audits per session. "
+            "Please switch to **'🔑 Bring Your Own Key'** in the sidebar to run unlimited audits with your personal OpenRouter key, "
+            "or explore our pre-indexed DePIN benchmarks below!"
+        )
+    else:
+        # Determine execution label
+        if api_mode == "⚡ Haiox Community Tier (Free Quota)":
+            spinner_msg = f"⚡ [Haiox Community Quota] Ingesting {active_url} & executing 6-Agent LangGraph via OpenRouter..."
+            st.session_state.free_audits_used += 1
+        elif active_api_key:
+            spinner_msg = f"🚀 [BYOK Mode] Ingesting {active_url} & executing 6-Agent LangGraph via {selected_model}..."
+        else:
+            spinner_msg = f"⚡ [Deterministic Engine] Parsing AST structure & generating SHA-256 evidence for {active_url}..."
         
-        loop = asyncio.new_event_loop()
-        asyncio.set_event_loop(loop)
-        try:
-            raw_state = loop.run_until_complete(depin_agent.ainvoke(initial_state))
-            elapsed = time.time() - start_time
-            audit_result = {
-                "title": f"Audit of {active_url}",
-                "content_sha256": raw_state.get("content_sha256", hashlib.sha256(active_url.encode()).hexdigest()),
-                "clean_markdown": raw_state.get("clean_markdown", "# Extracted Content\nNo clean markdown available."),
-                "findings": raw_state.get("structured_findings", {}),
-                "elapsed": f"{elapsed:.2f}s"
+        with st.spinner(spinner_msg):
+            start_time = time.time()
+            initial_state = {
+                "target_url": active_url,
+                "project_id": 1,
+                "evidence_id": None,
+                "content_sha256": None,
+                "clean_markdown": None,
+                "evidence_artifact": None,
+                "structured_findings": {},
+                "verification_result": None,
+                "current_step": "init",
+                "errors": []
             }
-        except Exception as e:
-            st.error(f"Execution Error: {str(e)}")
-            audit_result = {}
-        finally:
-            loop.close()
+            
+            loop = asyncio.new_event_loop()
+            asyncio.set_event_loop(loop)
+            try:
+                raw_state = loop.run_until_complete(depin_agent.ainvoke(initial_state))
+                elapsed = time.time() - start_time
+                audit_result = {
+                    "title": f"Audit of {active_url}",
+                    "content_sha256": raw_state.get("content_sha256", hashlib.sha256(active_url.encode()).hexdigest()),
+                    "clean_markdown": raw_state.get("clean_markdown", "# Extracted Content\nNo clean markdown available."),
+                    "findings": raw_state.get("structured_findings", {}),
+                    "elapsed": f"{elapsed:.2f}s"
+                }
+            except Exception as e:
+                st.error(f"Execution Error: {str(e)}")
+                audit_result = {}
+            finally:
+                loop.close()
 
 elif active_url in PRESET_DOSSIERS:
     # Instant load of verified ground-truth dossier
