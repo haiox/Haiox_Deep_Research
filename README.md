@@ -1,25 +1,36 @@
-# Haiox Deep Research `v0.6.0-alpha`
+# Haiox Deep Research `v1.0.0` (Production Release)
 
-[![Version](https://img.shields.io/badge/version-v0.6.0--alpha-blue.svg)](https://github.com/haiox/Haiox_Deep_Research)
+[![Version](https://img.shields.io/badge/version-v1.0.0--production-blue.svg)](https://github.com/haiox/Haiox_Deep_Research)
 [![Tests](https://img.shields.io/badge/tests-14%2F14%20passing-brightgreen.svg)](tests/)
 [![Architecture](https://img.shields.io/badge/architecture-LangGraph%20Multi--Agent-orange.svg)](agents/)
 [![Bedrock](https://img.shields.io/badge/bedrock-Haiox%20Smart%20Miner%20v2.0-purple.svg)](https://github.com/haiox/Haiox_Smart_Miner)
+[![Dashboard](https://img.shields.io/badge/GUI-Streamlit%20Dashboard-red.svg)](streamlit_app.py)
 
 > **Autonomous multi-agent research pipeline** for evidence-first Web3/DePIN protocol investigations, backed by cryptographic SHA-256 evidence ingested directly from **Haiox Smart Miner v2.0**.
 
 ---
 
-### 📍 Current Milestone: Day 6 Completed (Adversarial Critic Agent Activated)
-* **Completed (v0.6.0):**
+### 📍 Milestone: Full Production Release v1.0.0 Completed
+* **Delivered Capabilities (v1.0.0):**
   * ✅ **Step 1:** Smart Miner v2.0 bedrock ingestion with SHA-256 digital provenance.
   * ✅ **Step 2:** Dual-storage architecture (Supabase / Postgres + Zero-config local SQLite fallback & disk JSON audit).
   * ✅ **Step 3:** Technical Architecture Agent (`agents/architecture_agent.py`) separating whitepaper marketing claims from actual GitHub implementation, node specs, and consensus mechanics.
   * ✅ **Step 4:** Deep Tokenomics Agent (`agents/tokenomics_agent.py`) analyzing inflation curves, vesting cliffs, utility sinks, and ponzinomics/dump risk scoring.
   * ✅ **Step 5:** Forensic Risk Agent (`agents/risk_agent.py`) auditing admin-key custody, smart contract upgradability, ISP regulatory liabilities, and issuing 1-100 composite risk scores.
   * ✅ **Step 6:** Adversarial Critic Agent (`agents/critic_agent.py`) cross-examining analytical claims against source AST evidence, striking out unsubstantiated hype, and computing zero-hallucination scores.
-  * ✅ **Automated Tests:** 14/14 integration tests passing in strict async environment (`tests/test_critic_agent.py`, `tests/test_risk_agent.py`, `tests/test_tokenomics_agent.py`, `tests/test_architecture_agent.py`, `tests/test_miner_v2_integration.py`).
-* **Active / Next Steps (Sprint to v1.0.0):**
-  * 🔄 **Step 7:** Production Release v1.0.0, Live End-to-End Run, & Executive Report Factory.
+  * ✅ **Step 7:** Interactive GUI Dashboard (`streamlit_app.py`), live production execution, and GitHub Markdown audit factory.
+  * ✅ **Automated Tests:** 14/14 integration tests passing in strict async environment (`100% Green in 23s`).
+
+---
+
+## 🚀 Interactive Streamlit Dashboard
+
+Run the standalone local research cockpit:
+```powershell
+streamlit run streamlit_app.py
+```
+* **Real-time 6-Agent Execution:** Live inspection of node topology, tokenomics curves, admin keys, and critic redlines.
+* **Key Metric Gauges:** SHA-256 evidence digest, composite risk score (1-100), inflation dump score, and zero-hallucination accuracy.
 
 ## Architecture & Capabilities
 
