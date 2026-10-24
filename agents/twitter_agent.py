@@ -68,6 +68,8 @@ async def twitter_factory_node(state: AgentState):
             f.write(f"```json\n{json.dumps(findings.get('tokenomics', {}), indent=2)}\n```\n\n")
             f.write("## ⚠️ Risk Analysis\n")
             f.write(f"```json\n{json.dumps(findings.get('risk', {}), indent=2)}\n```\n\n")
+            f.write("## ⚔️ Adversarial Critic & Zero-Hallucination Audit\n")
+            f.write(f"```json\n{json.dumps(findings.get('critic', {}), indent=2)}\n```\n\n")
             f.write("## ⚖️ Verification Results\n")
             f.write(f"```json\n{json.dumps(verification, indent=2)}\n```\n")
 

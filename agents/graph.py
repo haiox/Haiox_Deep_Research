@@ -10,6 +10,7 @@ from agents.architecture_agent import architecture_node
 from agents.tokenomics_agent import tokenomics_node
 from agents.risk_agent import risk_node
 from agents.verification_agent import verification_node
+from agents.critic_agent import critic_node
 
 # ==========================================
 # Nodes
@@ -68,6 +69,7 @@ workflow.add_node("extract_evidence", extract_and_evidence_node)
 workflow.add_node("architecture", architecture_node)
 workflow.add_node("tokenomics", tokenomics_node)
 workflow.add_node("risk", risk_node)
+workflow.add_node("critic", critic_node)
 workflow.add_node("verification", verification_node)
 workflow.add_node("persist_research", persist_research_node)
 workflow.add_node("twitter_factory", twitter_factory_node)
@@ -76,7 +78,8 @@ workflow.set_entry_point("extract_evidence")
 workflow.add_edge("extract_evidence", "architecture")
 workflow.add_edge("architecture", "tokenomics")
 workflow.add_edge("tokenomics", "risk")
-workflow.add_edge("risk", "verification")
+workflow.add_edge("risk", "critic")
+workflow.add_edge("critic", "verification")
 workflow.add_edge("verification", "persist_research")
 workflow.add_edge("persist_research", "twitter_factory")
 workflow.add_edge("twitter_factory", END)
