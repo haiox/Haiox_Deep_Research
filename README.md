@@ -1,6 +1,6 @@
 # Haiox Deep Research 🔬
 
-**Autonomous multi-agent due-diligence and forensic research engine powering the Haiox AI Trilogy.**
+**Pillar II of the Haiox Portfolio: Autonomous multi-agent due-diligence and forensic research engine.**
 
 [![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB?style=flat-square&logo=python&logoColor=white)](https://python.org)
 [![Tests](https://img.shields.io/badge/Tests-14%2F14_Passing-00C853?style=flat-square&logo=checkmarx&logoColor=white)](tests/)
