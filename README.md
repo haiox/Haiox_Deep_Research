@@ -24,7 +24,7 @@ Haiox Deep Research is an enterprise-grade autonomous forensic investigation eng
 
 ## 🏛️ Haiox Ecosystem Architecture
 
-Haiox Deep Research operates as the central analytical intelligence pillar in the 3-tier Haiox Agent ecosystem:
+Haiox Deep Research operates as the autonomous due-diligence engine powered by Haiox Smart Miner:
 
 ```
 ┌────────────────────────────────────────────────────────────────────────┐
@@ -45,7 +45,7 @@ Haiox Deep Research operates as the central analytical intelligence pillar in th
 
 1. **[Haiox Smart Miner](https://github.com/haiox/Haiox_Smart_Miner):** Bedrock data acquisition, zero-trust network shielding, and structural AST noise cleaning (218/218 tests passing).
 2. **Haiox Deep Research (This Repository):** Autonomous multi-agent due-diligence engine executing architecture verification, tokenomics auditing, admin-key custody analysis, and adversarial fact-checking.
-3. **[Haiox Orchestrator](https://github.com/haiox/Haiox-Orchestrator-Architecture):** Master meta-agent council coordinating global token budgets, multi-model blind brainstorming, and final synthesis.
+
 
 ---
 
