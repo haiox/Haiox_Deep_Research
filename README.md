@@ -1,6 +1,6 @@
 # Haiox Deep Research 🔬
 
-**Pillar II of the Haiox Portfolio: Autonomous multi-agent due-diligence and forensic research engine.**
+**Autonomous multi-agent due-diligence and forensic research engine powering the Haiox AI Trilogy.**
 
 [![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB?style=flat-square&logo=python&logoColor=white)](https://python.org)
 [![Tests](https://img.shields.io/badge/Tests-14%2F14_Passing-00C853?style=flat-square&logo=checkmarx&logoColor=white)](tests/)
@@ -10,7 +10,15 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-14B8A6?style=flat-square)](LICENSE)
 [![Streamlit Cockpit](https://img.shields.io/badge/Streamlit_App-Live_Review-FF4B4B?style=flat-square&logo=streamlit&logoColor=white)](https://haiox-deep-research-review.streamlit.app/)
 
-Haiox Deep Research is an enterprise-grade autonomous forensic investigation engine engineered to evaluate Web3 protocols, DePIN hardware networks, and smart contract ecosystems. Powered by **Haiox Smart Miner v2.0** as its zero-trust ingestion bedrock, it strips marketing noise, executes multi-agent cross-examination across 6 specialized LangGraph nodes, verifies whitepaper claims against real AST codebases, and calculates an objective **Zero-Hallucination Score** backed by immutable SHA-256 evidence provenance.
+## 💡 Why I Built This
+
+Crypto whitepapers and tech pitch decks are full of hype. Founders promise revolutionary decentralized compute and AI magic, but half the time their GitHub repository is an empty fork, their tokenomics are mathematically unsustainable, or their smart contracts are controlled by a single private key.
+
+**Haiox Deep Research audits projects automatically before you invest or partner:**
+- **Cross-examines claims against actual code:** A 6-agent LangGraph pipeline matches whitepaper promises against real AST codebases and commit histories.
+- **Audits tokenomics & admin key risks:** Uncovers predatory unlock schedules, hidden inflation, and single points of failure (Multi-Sig vs single-owner admin keys).
+- **Calculates a Zero-Hallucination Score:** An adversarial critic agent cross-checks every finding against raw, SHA-256-verified source documents extracted by `Haiox Smart Miner`.
+- **Delivers actionable visual intelligence:** Interactive dark-glassmorphic Streamlit dashboard with risk matrices and one-click PDF/markdown export.
 
 <p align="center">
   <img src="assets/pipeline-overview.svg" width="100%" alt="Haiox Deep Research Architecture: Bedrock Ingestion, LangGraph 6-Agent Flow, Streamlit Cockpit, and Trilogy Synergy">
@@ -24,7 +32,7 @@ Haiox Deep Research is an enterprise-grade autonomous forensic investigation eng
 
 ## 🏛️ Haiox Ecosystem Architecture
 
-Haiox Deep Research operates as the autonomous due-diligence engine powered by Haiox Smart Miner:
+Haiox Deep Research operates as the central analytical intelligence pillar in the 3-tier Haiox Agent ecosystem:
 
 ```
 ┌────────────────────────────────────────────────────────────────────────┐
@@ -45,7 +53,7 @@ Haiox Deep Research operates as the autonomous due-diligence engine powered by H
 
 1. **[Haiox Smart Miner](https://github.com/haiox/Haiox_Smart_Miner):** Bedrock data acquisition, zero-trust network shielding, and structural AST noise cleaning (218/218 tests passing).
 2. **Haiox Deep Research (This Repository):** Autonomous multi-agent due-diligence engine executing architecture verification, tokenomics auditing, admin-key custody analysis, and adversarial fact-checking.
-
+3. **[Haiox Orchestrator](https://github.com/haiox/Haiox-Orchestrator-Architecture):** Master meta-agent council coordinating global token budgets, multi-model blind brainstorming, and final synthesis.
 
 ---
 
